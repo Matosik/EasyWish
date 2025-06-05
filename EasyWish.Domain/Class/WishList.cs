@@ -12,6 +12,8 @@ public class WishList
 
     public int? UserId { get; set; }
 
+    public User? Owner {get; set; }
+
     public string? Name { get; set; }
 
     public DateTime? Created { get; set; }
