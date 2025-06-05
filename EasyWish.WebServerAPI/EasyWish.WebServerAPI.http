@@ -1,0 +1,6 @@
+@EasyWish.WebServerAPI_HostAddress = http://localhost:5269
+
+GET {{EasyWish.WebServerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

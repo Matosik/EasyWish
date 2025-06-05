@@ -1,0 +1,55 @@
+﻿using EasyWish.Domain.Repository;
+using EasyWish.Domain.Dto.UserDto;
+using EasyWish.Domain.Class;
+using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+
+namespace EasyWish.WebServerAPI.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class UserController(IGenericRepository<User> repository, IMapper mapper) : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var users = await repository.GetAll();
+        return Ok(mapper.Map<IEnumerable<GetUser>>(users));
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var user = await repository.GetById(id);
+        if (user == null) return NotFound();
+        return Ok(mapper.Map<IEnumerable<GetUser>>(user));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] PostUser userDto)
+    {
+        if (userDto == null) return BadRequest("User cannot be null");
+        var user = mapper.Map<User>(userDto);
+        user.Registration = DateTime.UtcNow;
+        await repository.Create(user);
+        return Ok();
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, PutUser userDto)
+    {
+        var user = await repository.GetById(id);
+        if (user == null) return BadRequest("User ID mismatch");
+        if (userDto == null) return BadRequest("User cannot be null");
+        user = mapper.Map(userDto, user);
+        await repository.Update(user);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await repository.Delete(id);
+        if (!deleted) return NotFound();
+        return NoContent();
+    }
+}
