@@ -11,8 +11,4 @@ public class PutUser
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
-
-    public ICollection<WishList>? Lists { get; set; }
-
-    public ICollection<Friendship>? Friends { get; set; }
 }
