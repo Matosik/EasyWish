@@ -21,7 +21,7 @@ public class UserController(IGenericRepository<User> repository, IMapper mapper)
     {
         var user = await repository.GetById(id);
         if (user == null) return NotFound();
-        return Ok(mapper.Map<IEnumerable<GetUser>>(user));
+        return Ok(mapper.Map<GetUser>(user));
     }
 
     [HttpPost]
