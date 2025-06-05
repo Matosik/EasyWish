@@ -2,12 +2,19 @@
 
 public class User
 {
-    public int Id { get; set; }
-    public DateTime Registration { get; set; }
-    public required string UserName { get; set; }
-    public required string Password { get; set; }
+    public int? Id { get; set; }
+
+    public DateTime? Registration { get; set; }
+
+    public string? UserName { get; set; }
+
+    public string? Password { get; set; }
+    
     public string? FirstName { get; set; }
+
     public string? LastName { get; set; }
-    public List<WishList> Lists { get; set; } = new List<WishList>();
-    public List<Friendship> Friends { get; set; } = new List<Friendship>();
+
+    public ICollection<WishList>? Lists { get; set; }
+
+    public ICollection<Friendship>? Friends { get; set; } 
 }
