@@ -9,5 +9,5 @@ public class User
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public List<WishList> Lists { get; set; } = new List<WishList>();
-    public List<User> Friends { get; set; } = new List<User>();
+    public List<Friendship> Friends { get; set; } = new List<Friendship>();
 }
