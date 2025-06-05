@@ -10,7 +10,7 @@ using EasyWish.Domain.Dto.UserDto;
 
 namespace EasyWish.Domain.Tools;
 
-class Mapper : Profile
+public class Mapper : Profile
 {
     public Mapper()
     {
