@@ -11,13 +11,13 @@ namespace EasyWish.WebServerAPI.Controllers;
 public class UserController(IGenericRepository<User> repository, IMapper mapper) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll() // НЕ выводит список друзей и список WishList
     {
         var users = await repository.GetAll();
         return Ok(mapper.Map<IEnumerable<GetUser>>(users));
     }
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById(int id) // НЕ выводит список друзей и список WishList
     {
         var user = await repository.GetById(id);
         if (user == null) return NotFound();
@@ -44,8 +44,8 @@ public class UserController(IGenericRepository<User> repository, IMapper mapper)
         await repository.Update(user);
         return NoContent();
     }
-
-    [HttpDelete("{id}")]
+        
+    [HttpDelete("{id}")] // НЕ Удаляет с связанными данными 
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await repository.Delete(id);
