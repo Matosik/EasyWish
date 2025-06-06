@@ -24,15 +24,26 @@ public class EasyWishContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder) 
     {
-        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<User>()
             .HasMany<Friendship>()
             .WithOne(u => u.Initiator)
             .HasForeignKey(u => u.InitiatorId);
 
-        //modelBuilder.Entity<WishList>
-        //    .HasMany<Wish>()
-        //    .WithOne()
-        //    .HasForeignKey(w => w.WishListId);
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.UserName)
+            .IsUnique();
+
+        modelBuilder.Entity<Wish>()
+            .HasOne<WishList>()
+            .WithMany(wl => wl.Wishes)
+            .HasForeignKey(w => w.WishListId);
+
+        modelBuilder.Entity<WishList>()
+            .HasOne<User>()
+            .WithMany(u => u.Lists)
+            .HasForeignKey(wl => wl.UserId);
+
+
+        base.OnModelCreating(modelBuilder);
     }
 }

@@ -13,10 +13,6 @@ public class Friendship
 {
     public int? Id { get; set; }
 
-    public User? Initiator { get; set; }
-
-    public User?  Recipient { get; set; }
-
     [ForeignKey(nameof(User))]
     public int? InitiatorId { get; set; }
 
@@ -25,4 +21,8 @@ public class Friendship
     public StatusResponse? Status { get; set;} 
 
     public DateTime? CreatedAt { get; set; }
+
+    public User? Initiator { get; set; }
+
+    public User? Recipient { get; set; }
 }
