@@ -25,4 +25,14 @@ public class Friendship
     public User? Initiator { get; set; }
 
     public User? Recipient { get; set; }
+
+    /// <summary>
+    /// Нормализованое поле UserAId = min(InitiatorId, RecipientId)
+    /// </summary>
+    public int? UserAId { get; set; }
+
+    /// <summary>
+    /// Нормализованое поле UserBId = max(InitiatorId, RecipientId)
+    /// </summary>
+    public int? UserBId { get; set; }
 }

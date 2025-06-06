@@ -1,4 +1,6 @@
-﻿namespace EasyWish.Domain.Class;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EasyWish.Domain.Class;
 
 public class User
 {
@@ -16,5 +18,12 @@ public class User
 
     public ICollection<WishList>? Lists { get; set; }
 
-    public ICollection<Friendship>? Friends { get; set; } 
+    public ICollection<Friendship>? SentFriendships { get; set; }
+
+    public ICollection<Friendship>? ReceivedFriendships { get; set; }
+
+    [NotMapped]
+    public IEnumerable<Friendship> Friends =>
+        (SentFriendships ?? Enumerable.Empty<Friendship>())
+        .Concat(ReceivedFriendships ?? Enumerable.Empty<Friendship>());
 }

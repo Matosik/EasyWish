@@ -2,7 +2,6 @@
 using EasyWish.Domain.Class;
 using EasyWish.Domain.Dto.FriendshipDto;
 using EasyWish.Domain.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyWish.WebServerAPI.Controllers;
@@ -30,6 +29,13 @@ public class FriendshipController(IGenericRepository<Friendship> repository, IMa
         if (friendshipDto == null) return BadRequest("Friendship cannot be null");
         var friendship = mapper.Map<Friendship>(friendshipDto);
         friendship.CreatedAt = DateTime.UtcNow;
+        if (friendship.InitiatorId is null || friendship.RecipientId is null) return BadRequest();
+        
+        int a = friendship.InitiatorId.Value;
+        int b = friendship.RecipientId.Value;
+        if (a == b) return BadRequest();
+        friendship.UserAId = Math.Min(a, b);
+        friendship.UserBId = Math.Max(a, b);
         await repository.Create(friendship);
         return Ok();
     }

@@ -19,7 +19,15 @@ public class Wish
 
     public DateTime? Created { get; set; }
 
+    /// <summary>
+    /// Id пользователя который забронировал дарить подарок
+    /// </summary>
     public int? IdReserved { get; set; } 
 
     public User? Reserved { get; set; } 
+
+    /// <summary>
+    /// Поле чтобы пользователь мог помечать какой подарок он уже купил или получил
+    /// </summary>
+    public bool? IsDone { get; set; } 
 }
