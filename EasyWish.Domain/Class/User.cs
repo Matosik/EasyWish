@@ -8,13 +8,20 @@ public class User
 
     public DateTime? Registration { get; set; }
 
-    public string? UserName { get; set; }
+    public string? Nickname { get; set; } // уникальный никнейм
 
-    public string? Password { get; set; }
-    
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
+
+    public string Email { get; set; } = null!;
+
+    public bool EmailConfirmed { get; set; } = false;
+    
+    public string? PasswordHash { get; set; }
+
+    public string? OAuthProvider { get; set; } // например: "google", "vk"
+    public string? OAuthSubject { get; set; } // уникальный ID от провайдера
 
     public ICollection<WishList>? Lists { get; set; }
 

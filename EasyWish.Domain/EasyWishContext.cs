@@ -43,7 +43,7 @@ public class EasyWishContext : DbContext
 
         //===========
         modelBuilder.Entity<User>()
-            .HasIndex(u => u.UserName)
+            .HasIndex(u => u.Nickname)
             .IsUnique();
 
         modelBuilder.Entity<Wish>()
