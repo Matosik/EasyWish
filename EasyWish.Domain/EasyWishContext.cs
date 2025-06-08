@@ -15,7 +15,7 @@ public class EasyWishContext : DbContext
     }
     public EasyWishContext(DbContextOptions<EasyWishContext> options)
         : base(options)
-    {
+    { 
         Database.EnsureCreated();
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
