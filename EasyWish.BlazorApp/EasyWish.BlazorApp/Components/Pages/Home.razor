@@ -1,0 +1,18 @@
+﻿@page "/"
+@inject NavigationManager Navigation
+<PageTitle>Home</PageTitle>
+
+<h1>Добро пожаловать в приложение Easywish</h1>
+
+<button class="btn btn-primary" @onclick="LoginPage">Регистрация</button>
+<button class="btn btn-primary" @onclick="SignInPage">Вход</button>
+
+@code{
+    public void LoginPage()
+    {
+        Navigation.NavigateTo("login");
+
+    }
+    public void SignInPage() => Navigation.NavigateTo("signIn");
+
+}
