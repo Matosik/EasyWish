@@ -2,7 +2,7 @@
 
 namespace EasyWish.Domain.Class;
 
-public class User
+public class AppUser
 {
     public int? Id { get; set; }
 

@@ -18,5 +18,5 @@ public class PutWish
 
     public int? IdReserved { get; set; }
 
-    public User? Reserved { get; set; }
+    public AppUser? Reserved { get; set; }
 }

@@ -8,7 +8,7 @@ namespace EasyWish.WebServerAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserController(IGenericRepository<User> repository, IMapper mapper) : ControllerBase
+public class UserController(IGenericRepository<AppUser> repository, IMapper mapper) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetAll() // НЕ выводит список друзей и список WishList
@@ -28,7 +28,7 @@ public class UserController(IGenericRepository<User> repository, IMapper mapper)
     public async Task<IActionResult> Create([FromBody] PostUser userDto)
     {
         if (userDto == null) return BadRequest("User cannot be null");
-        var user = mapper.Map<User>(userDto);
+        var user = mapper.Map<AppUser>(userDto);
         user.Registration = DateTime.UtcNow;
         await repository.Create(user);
         return Ok();

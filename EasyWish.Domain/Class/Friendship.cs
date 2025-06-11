@@ -12,18 +12,18 @@ public class Friendship
 {
     public int? Id { get; set; }
 
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(AppUser))]
     public int? InitiatorId { get; set; }
 
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(AppUser))]
     public int? RecipientId { get; set; }
     public StatusResponse? Status { get; set;} 
 
     public DateTime? CreatedAt { get; set; }
 
-    public User? Initiator { get; set; }
+    public AppUser? Initiator { get; set; }
 
-    public User? Recipient { get; set; }
+    public AppUser? Recipient { get; set; }
 
     /// <summary>
     /// Нормализованое поле UserAId = min(InitiatorId, RecipientId)

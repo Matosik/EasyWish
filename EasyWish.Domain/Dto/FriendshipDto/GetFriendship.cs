@@ -5,10 +5,10 @@ namespace EasyWish.Domain.Dto.FriendshipDto;
 
 public class GetFriendship
 {
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(AppUser))]
     public int? InitiatorId { get; set; }
 
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(AppUser))]
     public int? RecipientId { get; set; }
 
     public DateTime? CreatedAt { get; set; }

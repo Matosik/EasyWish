@@ -6,7 +6,7 @@ public class WishList
 
     public int? UserId { get; set; }
 
-    public User? Owner {get; set; }
+    public AppUser? Owner {get; set; }
 
     public string? Name { get; set; }
 

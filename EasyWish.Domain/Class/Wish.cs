@@ -24,7 +24,7 @@ public class Wish
     /// </summary>
     public int? IdReserved { get; set; } 
 
-    public User? Reserved { get; set; } 
+    public AppUser? Reserved { get; set; } 
 
     /// <summary>
     /// Поле чтобы пользователь мог помечать какой подарок он уже купил или получил

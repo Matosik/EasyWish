@@ -5,7 +5,7 @@ namespace EasyWish.Domain;
 
 public class EasyWishContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
+    public DbSet<AppUser> Users { get; set; }
     public DbSet<WishList> WishLists { get; set; }
     public DbSet<Wish> Wishes { get; set; }
     public DbSet<Friendship> Friendships { get; set; }
@@ -42,7 +42,7 @@ public class EasyWishContext : DbContext
             .IsUnique();
 
         //===========
-        modelBuilder.Entity<User>()
+        modelBuilder.Entity<AppUser>()
             .HasIndex(u => u.Nickname)
             .IsUnique();
 
@@ -53,7 +53,7 @@ public class EasyWishContext : DbContext
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<WishList>()
-            .HasOne<User>()
+            .HasOne<AppUser>()
             .WithMany(u => u.Lists)
             .HasForeignKey(wl => wl.UserId)
             .OnDelete(DeleteBehavior.Cascade);

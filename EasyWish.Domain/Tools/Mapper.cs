@@ -12,9 +12,9 @@ public class Mapper : Profile
 {
     public Mapper()
     {
-        CreateMap<User, GetUser>().ReverseMap();
-        CreateMap<User, PostUser>().ReverseMap();
-        CreateMap<User, PutUser>().ReverseMap();
+        CreateMap<AppUser, GetUser>().ReverseMap();
+        CreateMap<AppUser, PostUser>().ReverseMap();
+        CreateMap<AppUser, PutUser>().ReverseMap();
 
         CreateMap<WishList, GetWishList>().ReverseMap();
         CreateMap<WishList, PostWishList>().ReverseMap();
